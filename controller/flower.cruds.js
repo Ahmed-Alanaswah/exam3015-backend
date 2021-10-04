@@ -49,10 +49,13 @@ const updateFavFlower = async (req, res) => {
 		data.instructions = updateData.instructions;
 		data.photo = updateData.photo;
 		data.name = updateData.name;
+		data.save();
 	});
 
-	const data = await FlowerModel.find({});
-	res.send(data);
+	setTimeout(async () => {
+		const data = await FlowerModel.find();
+		res.send(data);
+	}, 500);
 };
 
 module.exports = {
